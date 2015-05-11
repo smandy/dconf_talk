@@ -150,3 +150,6 @@
 ** No interface/implementation split
 ** C linkage
 
+** Phobos
+*** CSVParser
+

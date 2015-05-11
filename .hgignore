@@ -1,1 +1,3 @@
 glob:*~
+glob:csvExample/.dub/**
+csvExample/csvExample
