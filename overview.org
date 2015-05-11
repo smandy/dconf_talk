@@ -1,0 +1,64 @@
+* Introduction + Outline
+** Context
+*** Business
+
+**** Hedge funds. Manage money on behalf of clients
+**** Group - within a fund managing portion of funds allocated money.
+**** Heavility Regulated
+**** No mistakes
+
+*** Software requirements
+*** Particular project
+*** D comes in
+
+* Productivity vs performance
+
+** Introduce the graph
+*** X productivity Y performance
+*** The four quadrants
+**** Stars
+**** Quick starters that perform badly
+**** Performers that take too long
+**** Idiots
+
+** Productivity model
+
+*** Productivity = -cost + min( time - startupTime ) * productivity
+*** Startuptime inversely proportional to productivity
+
+* Rationale for new architecture
+
+** 6 years old
+
+** Event Sourcing
+*** Benefits
+**** Determinism
+**** Replication
+**** Testing
+***** Reproducability
+***** Regressions
+*** Requirements
+**** Event Stream
+**** Realisable with modern SHM techniques
+***** Infinite queue
+***** Shm queue with ledger for recovery
+
+*** Why not Paxos/RAFT
+**** Unable to easily migrate the apps from one box to the other
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
