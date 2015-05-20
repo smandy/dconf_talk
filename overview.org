@@ -37,7 +37,7 @@
 * Rationale for new architecture
 ** Event Sourcing
 
-*** Reperesent *everything* as stream of events that are both 
+*** Represent *everything* as stream of events that are both 
 **** Ordered
 **** Persisted
 **** Performant (Optional)
@@ -60,53 +60,50 @@
     4. ++  HF Still not full sourcing but close
     5. --  IB Not event remotely *thinkable*
     6. +++ HF Full event sourcing
+*** Functional abstraction
+    ( State(n+1), Out(n) ) = f( State(n), Innovation(n) )
+
+    (S1,O1) = f( S0 ,E0 )
+    (S2,O2) = f( S1 ,E1 )
+            = f( f(S0,E0),E1)
+    Output o = state.onEvent( evt );
 *** Benefits
-**** Functional abstraction
-     ( State(n+1), Out(n) ) = f( State(n), Innovation(n) )
+**** Pure ( to all intents and purposes)
+**** Deterministic
+**** Resilient
+****** Replicate state to another box
+**** Audit
+****** User actions
+****** Historic replay
+**** Testing
+****** Reproducability
+****** Regressions
+**** Debugging
+****** Conditional breakpoints on problematic events
+**** Realtime separation of concerns (CQRS)
+***** Command Layer
+****** Trading
+***** Query Layer
+****** Can be parallelised across boxes/cluster
+****** Allows 'stop the world' calculations
+******* (Within reason) can't perform five minute calculation every second
+****** Examples
+******* State machine - statistics
+******* GUIs / monitoring
+******* Event Monitor
+**** Disadvantages
+***** Nonstandard approach - push back from devs
+***** Required disciplined approach
+**** Realisable with modern SHM techniques
+***** Acknowledgements
+****** Martin Thompson
+****** Peter Lawrey
 
-     (S1,O1) = f( S0 ,E0 )
-     (S2,O2) = f( S1 ,E1 )
-             = f( f(S0,E0),E1)
-     Output o = state.onEvent( evt );
-
-***** Consequences
-****** Pure ( to all intents and purposes)
-****** Determinism
-****** Resilience
-******** Replicate state to another box
-****** Realtime separation of concerns (CQRS)
-******* Command Layer
-******** Trading
-******* Query Layer
-******** Can be parallelised across boxes/cluster
-******** Allows 'stop the world' calculations
-********* (Within reason) can't perform five minute calculation every second
-******** Examples
-********* State machine - statistics
-********* GUIs / monitoring
-********* Event Monitor
-********* Replication
-****** Audit
-******** User actions
-******** Historic replay
-****** Testing
-******** Reproducability
-******** Regressions
-****** Debugging
-******** Conditional breakpoints on problematic events
-*** Disadvantages
-**** Nonstandard approach - push back from devs
-**** Required disciplined approach
-*** Realisable with modern SHM techniques
-**** Acknowledgements
-***** Martin Thompson
-***** Peter Lawrey
-
-**** Infinite queue
-**** SPSC queue with ledger for recovery
-**** MPSC queue with ledger for recovery
-*** Why not Paxos/RAFT
-**** Unable to easily migrate the apps from one box to the other
+***** Infinite queue
+***** SPSC queue with ledger for recovery
+***** MPSC queue with ledger for recovery
+**** Why not Paxos/RAFT
+***** Unable to easily migrate the apps from one box to the other
 
 
 * Overview of architecture
@@ -114,7 +111,9 @@
 ** Multi layered
 **** Separation of concerns
 
-**** Concurrency + Persistence handled by outside of the framework
+***** Concurrency
+***** Persistence
+***** Business Logic
 
 **** Layers
 ***** Inner layer
@@ -152,4 +151,10 @@
 
 ** Phobos
 *** CSVParser
+*** Json
+*** Datetime
+*** getopt
+*** Posix
+**** Mmap interface to the mothership
+
 

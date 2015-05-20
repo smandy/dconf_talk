@@ -1,0 +1,34 @@
+digraph G2 {
+   graph [rankdir = LR,
+          imagepath="/home/andy/repos/dev/python"];
+   
+          node[fontname="Liberation", fontsize=28];
+          
+   // imgnode[shape=record,fontname="Liberation",image="/home/andy/repos/dev/python/example5.png"];
+   // node[shape=record,fontname="Liberation"];
+
+   Market[label="Market", shape = record, fontsize=28, fillcolor = aquamarine3, style = filled];
+   CU [label="Carbon Units", shape = record, fontsize=28, fillcolor = aquamarine3, style = filled];
+   Brok [label="To Broker", shape = record, fontsize=28, fillcolor = aquamarine3, style = filled];
+   Broker [label="From Broker", shape = record, fontsize=28, fillcolor = aquamarine3, style = filled];
+   
+   MD[color="white",label="MD",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Inbound[color="white",label="Exec",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Outbound[color="white",label="Order",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   CommandControl[color="white",label="CC",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Concensus[color="white",label="Cons",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Source[color="white",label="Loop",image="/home/andy/repos/dev/python/example8.png",imagepath="/home/andy/repos/dev/python"];
+
+   Market -> MD;
+   Broker -> Inbound;
+   CU     -> CommandControl;
+   
+   MD             -> Source;
+   CommandControl -> Source;
+   Inbound        -> Source;
+   Source         -> Outbound;
+   Source         -> Concensus;
+   Outbound -> Brok;
+   
+
+}

@@ -1,0 +1,25 @@
+digraph G2 {
+   graph [rankdir = LR,
+          imagepath="/home/andy/repos/dev/python"];
+          node[fontname="Liberation", fontsize=28];
+          
+   // imgnode[shape=record,fontname="Liberation",image="/home/andy/repos/dev/python/example5.png"];
+   // node[shape=record,fontname="Liberation"];
+
+   Market  [label="Market", shape = record, fontsize = 28, fillcolor = aquamarine3, style = filled];
+   Brok    [label="To Broker", shape = record, fontsize = 28, fillcolor = aquamarine3, style = filled];
+   Broker  [label="From Broker", shape = record, fontsize = 28, fillcolor = aquamarine3, style = filled];
+   CU      [label="Carbon Units", shape = record, fontsize = 28, fillcolor = aquamarine3, style = filled];
+   
+   IN[color="white",label="In",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Outbound[color="white",label="Out",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
+   Source[color="white",label="Loop",image="/home/andy/repos/dev/python/example8.png",imagepath="/home/andy/repos/dev/python"];
+
+   Market -> IN;
+   Broker -> IN;
+   CU     -> IN;
+   
+   IN             -> Source;
+   Source         -> Outbound;
+   Outbound -> Brok;
+}
