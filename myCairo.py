@@ -67,8 +67,27 @@ def frange(start,stop, step=1.0):
 
 SEGMENTS = 16
 
-fillers = { 9 : (0, 1, 1),
-            14 : (0, 1, 1) }
+
+fillers = { 28  : (0,   0  , 1),
+            20  : (1,   0  ,   0),
+}
+
+def makeFillers( sIdx, sTup, endIdx, endTup):
+    nums = arange( sIdx, endIdx + 1 )
+    N = len(nums)
+    reds   = linspace( sTup[0], endTup[0], N)
+    greens = linspace( sTup[1], endTup[1], N)
+    blues  = linspace( sTup[2], endTup[2], N)
+    ret = {}
+    for idx, r, g, b in zip( nums, reds, greens, blues):
+        ret[idx] = (r,g,b)
+    return ret
+
+fillers = makeFillers( 18, (0.0, 0.0, 1.0), 30, (1.0, 0.0, 0.0) )
+
+
+#fillers[0] = ( 1.0, 0.0, 1.0)
+#fillers[8] = ( 0.0, 1.0, 0.0)
 
 def ringBuffer(ctx,
                pos,
@@ -270,7 +289,7 @@ ctx.restore()
 surface.write_to_png ("example4.png") # Output to PNG
 
 
-def doSurf(SZ, dest, fillers = {}):
+def doSurf(SZ, dest, fillers = {}, SEGMENTS = 16):
     surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, SZ, SZ)
     ctx = cairo.Context(surface)
     ctx.set_line_width (0.01)
@@ -280,11 +299,14 @@ def doSurf(SZ, dest, fillers = {}):
     ctx.fill()
     ctx.stroke()
     black(ctx)
-    ringBuffer(ctx, (0.5, 0.5), 0.4, 0.8 * 0.4 , 16, 0.75, fillers = fillers)
+    ringBuffer(ctx, (0.5, 0.5), 0.4, 0.8 * 0.4 , SEGMENTS, 0.75, fillers = fillers)
     surface.write_to_png (dest) # Output to PNG
 doSurf(300, "example5.png")
-doSurf(600, "example6.png", fillers = fillers)
 
+doSurf(150, "trading_inout_queue.png")
+
+
+doSurf(600, "example6.png", fillers = fillers, SEGMENTS = 32)
 
 def doCont(SZ, dest):
     surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, SZ, SZ)
@@ -336,8 +358,6 @@ endX = 0.5 + 0.4 * math.cos(330 * RADIANS_PER_DEGREE )
 endY = 0.5 + 0.4 * math.sin(330 * RADIANS_PER_DEGREE )
 arrowHead(ctx, (endX, endY), 38 * RADIANS_PER_DEGREE, 0.4)
 surface.write_to_png ("example8.png") # Output to PNG
-
-
 
 
 # Looper

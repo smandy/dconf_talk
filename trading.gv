@@ -1,0 +1,18 @@
+digraph G2 {
+   graph [rankdir = LR,
+          imagepath="/home/andy/repos/dconf_talk"];
+          node[fontname="Liberation", fontsize=24];
+
+   API[label="API", shape = "record", fillcolor = aquamarine3, style = filled];
+   D[label="D", shape = "record", fillcolor = aquamarine3 , style = filled];
+
+   INBOUND[color="white",label="IN",image="trading_inout_queue.png"];
+   OUTBOUND[color="white",label="OUT",image="trading_inout_queue.png"];
+
+   API -> D [ label = "callbacks", fontname = "Liberation", fontsize = 24];
+   API -> D [ label = "method call", fontname = "Liberation", dir = back, fontsize = 24];
+
+
+   D   -> OUTBOUND [ label = "generate FIX from", fontname = "Liberation", dir = back, fontsize = 24];
+   D   -> INBOUND [ label = "parse FIX into", fontname = "Liberation", fontsize= 24];
+}
