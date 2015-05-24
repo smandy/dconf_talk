@@ -44,7 +44,7 @@ for template in [ """pygmentize -O "style=%s,font_size=36,line_numbers=False" -o
                   
                   """pygmentize -O "style=%s,font_size=30,line_numbers=False" -o dumpInfo_%s.png dumpInfo.d""",
                   """pygmentize -O "style=%s,font_size=20,line_numbers=False" -o padding_%s.png padding.java""",
-                  """pygmentize -O "style=%s,font_size=20,line_numbers=False" -o cost_%s.png cost.py""",
+                  """pygmentize -O "style=%s,font_size=30,line_numbers=False" -o cost_%s.png cost.py""",
                   """pygmentize -O "style=%s,font_size=40,line_numbers=False" -o snippet2_%s.png snippet2.d""" ]:
 
     for x in lines:
