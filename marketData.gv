@@ -1,6 +1,6 @@
 digraph G2 {
    graph [rankdir = LR,
-          imagepath="/home/andy/repos/dconf_talk"];
+          imagepath="."];
           node[fontname="Liberation", fontsize=18];
           
    API[label="API", shape = "record", fillcolor = aquamarine3, style = filled];

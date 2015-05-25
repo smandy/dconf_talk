@@ -1,23 +1,18 @@
 digraph G2 {
    graph [rankdir = LR,
-          imagepath="/home/andy/repos/dev/python"];
-   
+          imagepath="."];
           node[fontname="Liberation", fontsize=22];
-          
-   // imgnode[shape=record,fontname="Liberation",image="/home/andy/repos/dev/python/example5.png"];
-   // node[shape=record,fontname="Liberation"];
-
    Market[label="Market", shape = record, fontsize=22, fillcolor = red, style = filled];
    CU [label="Carbon Units", shape = record, fontsize=22, fillcolor = aquamarine3, style = filled];
    Brok [label="To Broker", shape = record, fontsize=22, fillcolor = red, style = filled];
    Broker [label="From Broker", shape = record, fontsize=22, fillcolor = red, style = filled];
    
-   MD[color="white",label="MD",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Inbound[color="white",label="Exec",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Outbound[color="white",label="Order",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   CommandControl[color="white",label="CC",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Concensus[color="white",label="Cons",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Source[color="white",label="Loop",image="/home/andy/repos/dev/python/example8.png",imagepath="/home/andy/repos/dev/python"];
+   MD[color="white",label="MD",image="example5.png"];
+   Inbound[color="white",label="Exec",image="example5.png"];
+   Outbound[color="white",label="Order",image="example5.png"];
+   CommandControl[color="white",label="CC",image="example5.png"];
+   Concensus[color="white",label="Cons",image="example5.png"];
+   Source[color="white",label="Loop",image="example8.png"];
 
    Market -> MD;
    Broker -> Inbound;
@@ -29,6 +24,4 @@ digraph G2 {
    Source         -> Outbound;
    Source         -> Concensus;
    Outbound -> Brok;
-   
-
 }
