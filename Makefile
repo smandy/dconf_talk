@@ -4,7 +4,7 @@ gv:
 	dot -Tpng -o doit.png doit.gv
 
 overview:
-	dot -Tpng -Gsize=9,15 -Gdpi=100 -o overview.png overview.gv
+	dot -Tpng -Gsize=10,20 -Gdpi=150 -o overview.png overview.gv
 
 overview2:
 	dot -Tpng -Gsize=10,20 -Gdpi=120 -o overview2.png overview.gv
@@ -20,10 +20,9 @@ marketData:
 	dot -Tpng -Gsize=10,20 -Gdpi=160 -o marketData.png marketData.gv
 
 trading:
-	dot -Tpng -Gsize=10,20 -Gdpi=120 -o trading.png trading.gv
-
+	dot -Tpng -Gsize=10,20 -Gdpi=160 -o trading.png trading.gv
 
 sim:
-	dot -Tpng -Gsize=10,20 -Gdpi=120 -o sim.png sim.gv
+	dot -Tpng -Gsize=10,20 -Gdpi=150 -o sim.png sim.gv
 
 

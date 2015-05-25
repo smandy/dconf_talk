@@ -1,17 +1,23 @@
 digraph G2 {
    graph [rankdir = LR,
           imagepath="."];
-          node[fontname="Liberation", fontsize=18];
+   node[fontname="Liberation", fontsize=14
+        ];
 
-   API[label="API", shape = "record", fillcolor = aquamarine3, style = filled];
-   D[label="D", shape = "record", label = "{ { <cb>cb|<call>call} |    D    | { <parse>parse|<generate>generate} }", fillcolor = aquamarine3 , style = filled];
 
-   INBOUND[ color="white" ,label="IN"  , image="trading_inout_queue.png"];
    OUTBOUND[color="white" ,label="OUT" , image="trading_inout_queue.png"];
+   INBOUND[ color="white" ,label="IN"  , image="trading_inout_queue.png"];
+   
+   D[shape     = "record",
+     label     = "{ { <generate>generate|<parse>parse } | d_gateway | { <call>call|<cb>cb} }",
+     fillcolor = aquamarine3 ,
+     style     = filled];
 
-   API -> D:cb [ fontsize = 24];
-   API -> D:call [ dir      = back];
+   API[label   ="API", shape = "record", fillcolor = aquamarine3, style = filled];
 
-   D:generate   -> OUTBOUND [ fontname = "Liberation", dir = back];
-   D:parse      -> INBOUND [  fontname = "Liberation"];
+   OUTBOUND -> D:generate [ fontname = "Liberation"];
+   INBOUND  -> D:parse    [ fontname = "Liberation", dir = back];
+
+   D:call -> API ;
+   D:cb   -> API [ dir      = back];
 }

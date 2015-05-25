@@ -83,7 +83,8 @@ def makeFillers( sIdx, sTup, endIdx, endTup):
         ret[idx] = (r,g,b)
     return ret
 
-fillers = makeFillers( 18, (0.0, 0.0, 1.0), 30, (1.0, 0.0, 0.0) )
+fillers = makeFillers( 18, (0.0, 0.0, 1.0),
+                       30, (1.0, 0.0, 0.0) )
 
 
 #fillers[0] = ( 1.0, 0.0, 1.0)

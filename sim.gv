@@ -1,20 +1,15 @@
 digraph G2 {
    graph [rankdir = LR,
-          imagepath="/home/andy/repos/dev/python"];
-   
-          node[fontname="Liberation", fontsize=28];
+          imagepath="."];
+          node[fontname="Liberation", fontsize=24];
           
-   // imgnode[shape=record,fontname="Liberation",image="/home/andy/repos/dev/python/example5.png"];
-   // node[shape=record,fontname="Liberation"];
-
    Sim [label="Simulator", shape=record];
    
-   MD[color="white",label="MD",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Inbound[color="white",label="Exec",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Outbound[color="white",label="Order",image="/home/andy/repos/dev/python/example5.png",imagepath="/home/andy/repos/dev/python"];
-   Source[color="white",label="SimLoop",image="/home/andy/repos/dev/python/example8.png",imagepath="/home/andy/repos/dev/python"];
+   MD[color="white",label="MD",image="example5.png"];
+   Inbound[color="white",label="Exec",image="example5.png"];
+   Outbound[color="white",label="Order",image="example5.png"];
+   Source[color="white",label="SimLoop",image="example8.png"];
 
-   //Market -> MD;
    MD             -> Source;
    Source -> Inbound [dir=back];
    Source         -> Outbound;
