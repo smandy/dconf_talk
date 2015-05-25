@@ -1,11 +1,11 @@
 digraph G2 {
    graph [rankdir = LR,
           imagepath="/home/andy/repos/dconf_talk"];
-          node[fontname="Liberation", fontsize=24];
+          node[fontname="Liberation", fontsize=18];
           
    API[label="API", shape = "record", fillcolor = aquamarine3, style = filled];
    D[label="D", shape = "record", fillcolor = aquamarine3 , style = filled];
-   MDStream[color="white",label="MD",image="example5.png"];
+   MDStream[color="white",label="MD",image="trading_inout_queue.png"];
 
    API -> D [ label = "callbacks", fontname = "Liberation"];
    D -> MDStream [ label = "convert to struct", fontname = "Liberation"];

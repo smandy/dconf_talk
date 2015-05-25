@@ -1,5 +1,3 @@
-
-
 all: gv overview overview2 sim better whered marketData trading
 
 gv:
@@ -19,10 +17,10 @@ better:
 	dot -Tpng -o better.png better.gv
 
 marketData:
-	dot -Tpng -o marketData.png marketData.gv
+	dot -Tpng -Gsize=10,20 -Gdpi=160 -o marketData.png marketData.gv
 
 trading:
-	dot -Tpng -o trading.png trading.gv
+	dot -Tpng -Gsize=10,20 -Gdpi=120 -o trading.png trading.gv
 
 
 sim:

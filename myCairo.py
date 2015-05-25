@@ -338,7 +338,7 @@ def doCont(SZ, dest):
     print "Boom"
     surface.write_to_png (dest) # Output to PNG
 
-doCont(150, "example7.png")
+doCont(300, "example7.png")
 
 # Looper
 surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, 300,300)
