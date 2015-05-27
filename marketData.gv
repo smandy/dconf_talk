@@ -8,5 +8,5 @@ digraph G2 {
    MDStream[color="white",label="MD",image="trading_inout_queue.png"];
 
    API -> D [ label = "callbacks", fontname = "Liberation"];
-   D -> MDStream [ label = "convert to struct", fontname = "Liberation"];
+   D -> MDStream [ label = "populate struct", fontname = "Liberation"];
 }

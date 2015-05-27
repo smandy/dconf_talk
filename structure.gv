@@ -1,0 +1,7 @@
+digraph G2 {
+   graph [rankdir = LR,
+          imagepath="."];
+          node[fontname="Liberation", fontsize=24];
+          
+   Structure [label="{ reserveTail, commitTail, head1, head2, data }", shape=record, fillcolor = aquamarine3, style = filled];
+}

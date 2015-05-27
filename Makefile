@@ -1,4 +1,4 @@
-all: gv overview overview2 sim better whered marketData trading
+all: gv overview overview2 sim better whered marketData trading structure
 
 gv:
 	dot -Tpng -o doit.png doit.gv
@@ -12,9 +12,15 @@ overview2:
 whered:
 	dot -Tpng -Gsize=10,20 -Gdpi=120 -o whered.png whered.gv
 
+structure:
+	dot -Tpng -Gsize=10,20 -Gdpi=120 -o structure.png structure.gv
+
+
 
 better:
 	dot -Tpng -o better.png better.gv
+
+
 
 marketData:
 	dot -Tpng -Gsize=10,20 -Gdpi=160 -o marketData.png marketData.gv

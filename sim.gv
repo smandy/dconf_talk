@@ -3,7 +3,7 @@ digraph G2 {
           imagepath="."];
           node[fontname="Liberation", fontsize=24];
           
-   Sim [label="Simulator", shape=record];
+   Sim [label="Simulator", shape=record, fillcolor = aquamarine3, style = filled];
    
    MD[color="white",label="MD",image="example5.png"];
    Inbound[color="white",label="Exec",image="example5.png"];
