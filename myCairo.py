@@ -51,7 +51,7 @@ def doArc(ctx, cx, cy, r1, r2, start, delta, fillWith = None):
         ctx.arc( cx, cy , r1, start, start + delta)
         ctx.fill()
         ctx.close_path()
-    ctx.set_source_rgb (0, 0, 0) # Solid color
+    #ctx.set_source_rgb (0, 0, 0) # Solid color
     ctx.new_path()
     ctx.arc( cx, cy , r1, start, start + delta)
     ctx.arc_negative( cx, cy , r2, start + delta, start)
@@ -86,7 +86,6 @@ def makeFillers( sIdx, sTup, endIdx, endTup):
 fillers = makeFillers( 18, (0.0, 0.0, 1.0),
                        30, (1.0, 0.0, 0.0) )
 
-
 #fillers[0] = ( 1.0, 0.0, 1.0)
 #fillers[8] = ( 0.0, 1.0, 0.0)
 
@@ -95,10 +94,10 @@ def ringBuffer(ctx,
                outerRadius,
                innerRadius,
                segments,
-               dutyCycle, fillers = {}):
+               dutyCycle,
+               fillers = {}):
     dtheta = 2 * pi / segments
     wedgeTheta = dutyCycle * dtheta
-
     cx, cy = pos
     xs = frange(0, 2 * pi, dtheta)
     for i,x in enumerate(xs):
@@ -290,7 +289,11 @@ ctx.restore()
 surface.write_to_png ("example4.png") # Output to PNG
 
 
-def doSurf(SZ, dest, fillers = {}, SEGMENTS = 16):
+def doSurf(SZ,
+           dest,
+           fillers = {},
+           SEGMENTS = 16,
+           myColor = black):
     surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, SZ, SZ)
     ctx = cairo.Context(surface)
     ctx.set_line_width (0.01)
@@ -299,15 +302,16 @@ def doSurf(SZ, dest, fillers = {}, SEGMENTS = 16):
     ctx.rectangle(0,0,1,1)
     ctx.fill()
     ctx.stroke()
-    black(ctx)
+    myColor(ctx)
     ringBuffer(ctx, (0.5, 0.5), 0.4, 0.8 * 0.4 , SEGMENTS, 0.75, fillers = fillers)
     surface.write_to_png (dest) # Output to PNG
-doSurf(300, "example5.png")
-
+    
+doSurf(300, "example5.png", myColor = red)
 doSurf(150, "trading_inout_queue.png")
-
-
-doSurf(600, "example6.png", fillers = fillers, SEGMENTS = 32)
+doSurf(600,
+       "example6.png",
+       fillers = fillers,
+       SEGMENTS = 32)
 
 def doCont(SZ, dest):
     surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, SZ, SZ)
