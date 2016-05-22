@@ -12,7 +12,7 @@ def text2(ctx,
          pos,
          theta = 0.0,
          face = 'Sans',
-         font_size = 0.05):
+          font_size = 10):
 
     ctx.select_font_face(face)
     ctx.set_font_size(font_size) # em-square height is 90 pixels
@@ -24,8 +24,8 @@ def text(ctx,
          string,
          pos,
          theta = 0.0,
-         face = 'Georgia',
-         font_size = 18):
+         face = 'Ubuntu',
+         font_size = 12):
     ctx.save()
     ctx.select_font_face(face , cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
     ctx.set_font_size(font_size)
@@ -41,6 +41,23 @@ def text(ctx,
     ctx.show_text(string)
     ctx.restore()
 
+
+def doSquare(ctx, cx, cy, r1, r2, start, delta, fillWith = None):
+    if fillWith:
+        ctx.set_source_rgb (*fillWith) # Solid color
+        ctx.new_path()
+        ctx.arc( cx, cy , r1, start, start + delta)
+        ctx.arc_negative( cx, cy , r2, start + delta, start)
+        ctx.arc( cx, cy , r1, start, start + delta)
+        ctx.fill()
+        ctx.close_path()
+    ctx.set_source_rgb (0, 0, 0) # Solid color
+    ctx.new_path()
+    ctx.arc( cx, cy , r1, start, start + delta)
+    ctx.arc_negative( cx, cy , r2, start + delta, start)
+    ctx.arc( cx, cy , r1, start, start + delta)
+    ctx.stroke()
+    ctx.close_path()
 
 def doArc(ctx, cx, cy, r1, r2, start, delta, fillWith = None):
     if fillWith:
@@ -59,6 +76,7 @@ def doArc(ctx, cx, cy, r1, r2, start, delta, fillWith = None):
     ctx.stroke()
     ctx.close_path()
 
+    
 
 def frange(start,stop, step=1.0):
     while start < stop:
